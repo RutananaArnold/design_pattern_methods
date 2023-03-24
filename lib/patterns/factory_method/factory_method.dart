@@ -15,34 +15,35 @@ import 'package:design_pattern_methods/patterns/factory_method/product_interface
 // concrete class
 class Electronics implements Product {
   @override
-  String? name;
+  String name;
   @override
-  String? category;
+  String category;
   @override
-  int? price;
-  Electronics({this.name, this.category, this.price});
+  int price;
+  Electronics(
+      {required this.name, required this.category, required this.price});
 }
 
 // concrete class
 class Clothing implements Product {
   @override
-  String? name;
+  String name;
   @override
-  String? category;
+  String category;
   @override
-  int? price;
-  Clothing({this.name, this.category, this.price});
+  int price;
+  Clothing({required this.name, required this.category, required this.price});
 }
 
 // concrete class
 class Groceries implements Product {
   @override
-  String? name;
+  String name;
   @override
-  String? category;
+  String category;
   @override
-  int? price;
-  Groceries({this.name, this.category, this.price});
+  int price;
+  Groceries({required this.name, required this.category, required this.price});
 }
 
 class ProductFactory {
