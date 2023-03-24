@@ -133,7 +133,20 @@ class _SingletonState extends State<Singleton> {
                           trailing:
                               Text(catalog!.products[index].price.toString()),
                         );
-                      }))
+                      })),
+          catalog!.products.isEmpty
+              ? const SizedBox()
+              : SizedBox(
+                  height: size.height * 0.3,
+                  child: Padding(
+                    padding: const EdgeInsets.only(
+                        top: 20, bottom: 20, left: 20, right: 20),
+                    child: Text(
+                        "checking whether the products list contains the added products ${catalog!.products.contains(
+                      catalog!.products[0],
+                    )}"),
+                  ),
+                )
         ],
       ),
     );

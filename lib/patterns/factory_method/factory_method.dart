@@ -5,9 +5,7 @@
 //Each of these classes overrides the properties name, price and category, to provide a specific implementation for that type of product.
 
 // There is also an interface class ProductFactory that defines a createProduct() method, which returns an instance of Product.
-//This is the factory method that subclasses will implement to create different types of products.
-
-//createProduct() method takes in 2 parameters i.e type which is a String specifying a product category and pdt which is an instance of Product(). this function checks to confirm which category does the product belong to,
+//This createProduct() method takes in 2 parameters i.e type which is a String specifying a product category and pdt which is an instance of Product(). this function checks to confirm which category does the product belong to,
 //upon confirmation, the product is added to our data store and the method return an instance of that Product Catgory.
 
 // Overall, the Factory Method pattern allows for flexible and extensible object creation, as new types of products can be added by simply creating a new Product subclass and a corresponding ProductFactory subclass. This can be particularly useful in situations where object creation is complex or varies depending on runtime conditions.
