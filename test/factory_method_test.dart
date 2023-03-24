@@ -12,11 +12,11 @@ void main() {
   group('Product Factory Tests', () {
     test('Test Electronics Product', () {
       // Arrange
-      ProductFactory factory = ProductFactory();
+      ProductFactory factory = ElectronicsFactory();
 
       // Act
-      Product product = factory.createProduct("electronics",
-          Product(name: "shirt", category: "electronics", price: 3000));
+      Product product =
+          factory.createProduct("electronics", "shirt", "electronics", 3000);
 
       // Assert
       expect(product is Electronics, true);
@@ -24,11 +24,11 @@ void main() {
 
     test('Test Clothing Product', () {
       // Arrange
-      ProductFactory factory = ProductFactory();
+      ProductFactory factory = ClothingFactory();
 
       // Act
-      Product product = factory.createProduct("clothing",
-          Product(name: "shirt", category: "clothing", price: 3000));
+      Product product =
+          factory.createProduct("clothing", "shirt", "clothing", 3000);
 
       // Assert
       expect(product is Clothing, true);
@@ -36,11 +36,11 @@ void main() {
 
     test('Test Groceries Product', () {
       // Arrange
-      ProductFactory factory = ProductFactory();
+      ProductFactory factory = GroceriesFactory();
 
       // Act
-      Product product = factory.createProduct("groceries",
-          Product(name: "shirt", category: "groceries", price: 3000));
+      Product product =
+          factory.createProduct("groceries", "shirt", "groceries", 3000);
 
       // Assert
       expect(product is Groceries, true);

@@ -47,18 +47,40 @@ class Groceries implements Product {
 }
 
 class ProductFactory {
-  Product createProduct(String type, Product pdt) {
+  Product createProduct(String type, String name, String category, int price) {
     if (type == "clothing") {
-      allProducts.add(pdt);
-      return Clothing(name: pdt.name, category: pdt.category, price: pdt.price);
+      // add to my store
+      allProducts.add(Product(name: name, category: category, price: price));
+      return Clothing(name: name, category: category, price: price);
     } else if (type == "groceries") {
-      allProducts.add(pdt);
-      return Groceries(
-          name: pdt.name, category: pdt.category, price: pdt.price);
+      // add to my store
+      allProducts.add(Product(name: name, category: category, price: price));
+      return Groceries(name: name, category: category, price: price);
     } else {
-      allProducts.add(pdt);
-      return Electronics(
-          name: pdt.name, category: pdt.category, price: pdt.price);
+      // add to my store
+      allProducts.add(Product(name: name, category: category, price: price));
+      return Electronics(name: name, category: category, price: price);
     }
+  }
+}
+
+class ElectronicsFactory implements ProductFactory {
+  @override
+  Product createProduct(String type, String name, String category, int price) {
+    return Electronics(name: name, category: category, price: price);
+  }
+}
+
+class ClothingFactory implements ProductFactory {
+  @override
+  Product createProduct(String type, String name, String category, int price) {
+    return Clothing(name: name, category: category, price: price);
+  }
+}
+
+class GroceriesFactory implements ProductFactory {
+  @override
+  Product createProduct(String type, String name, String category, int price) {
+    return Groceries(name: name, category: category, price: price);
   }
 }

@@ -109,16 +109,32 @@ class _FactoryMethodPageState extends State<FactoryMethodPage> {
               onPressed: () {
                 if (formKey.currentState!.validate()) {
                   setState(() {
-                    // Arrange
-                    ProductFactory factory = ProductFactory();
-
                     // Act
-                    Product product = factory.createProduct(
-                        dropdownvalue,
-                        Product(
-                            name: nameController.text,
-                            category: dropdownvalue,
-                            price: int.parse(priceControler.text)));
+                    if (dropdownvalue == "clothing") {
+                      // Arrange
+                      ProductFactory factory = ClothingFactory();
+                      Product product = factory.createProduct(
+                          dropdownvalue,
+                          nameController.text,
+                          dropdownvalue,
+                          int.parse(priceControler.text));
+                    } else if (dropdownvalue == "groceries") {
+                      // Arrange
+                      ProductFactory factory = GroceriesFactory();
+                      Product product = factory.createProduct(
+                          dropdownvalue,
+                          nameController.text,
+                          dropdownvalue,
+                          int.parse(priceControler.text));
+                    } else {
+                      // Arrange
+                      ProductFactory factory = ElectronicsFactory();
+                      Product product = factory.createProduct(
+                          dropdownvalue,
+                          nameController.text,
+                          dropdownvalue,
+                          int.parse(priceControler.text));
+                    }
                   });
                 }
               },
