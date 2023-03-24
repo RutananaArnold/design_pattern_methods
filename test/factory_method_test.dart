@@ -1,4 +1,5 @@
-import 'package:design_pattern_methods/patterns/factory_method.dart';
+import 'package:design_pattern_methods/patterns/factory_method/factory_method.dart';
+import 'package:design_pattern_methods/patterns/factory_method/product_interface.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 // In this unit test, we use the group and test functions from the test package to group related tests and specify individual tests respectively.
@@ -11,39 +12,38 @@ void main() {
   group('Product Factory Tests', () {
     test('Test Electronics Product', () {
       // Arrange
-      ProductFactory factory = ElectronicsFactory();
+      ProductFactory factory = ProductFactory();
 
       // Act
-      Product product = factory.createProduct();
+      Product product = factory.createProduct("electronics",
+          Product(name: "shirt", category: "electronics", price: 3000));
 
       // Assert
       expect(product is Electronics, true);
-      expect(
-          () => product.display(), prints("This is an electronics product\n"));
     });
 
     test('Test Clothing Product', () {
       // Arrange
-      ProductFactory factory = ClothingFactory();
+      ProductFactory factory = ProductFactory();
 
       // Act
-      Product product = factory.createProduct();
+      Product product = factory.createProduct("clothing",
+          Product(name: "shirt", category: "clothing", price: 3000));
 
       // Assert
       expect(product is Clothing, true);
-      expect(() => product.display(), prints("This is a clothing product\n"));
     });
 
     test('Test Groceries Product', () {
       // Arrange
-      ProductFactory factory = GroceriesFactory();
+      ProductFactory factory = ProductFactory();
 
       // Act
-      Product product = factory.createProduct();
+      Product product = factory.createProduct("groceries",
+          Product(name: "shirt", category: "groceries", price: 3000));
 
       // Assert
       expect(product is Groceries, true);
-      expect(() => product.display(), prints("This is a groceries product\n"));
     });
   });
 }

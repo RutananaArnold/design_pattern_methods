@@ -10,66 +10,54 @@
 
 // Overall, the Factory Method pattern allows for flexible and extensible object creation, as new types of products can be added by simply creating a new Product subclass and a corresponding ProductFactory subclass. This can be particularly useful in situations where object creation is complex or varies depending on runtime conditions.
 
-abstract class Product {
-  void display();
-}
+import 'package:design_pattern_methods/patterns/factory_method/product_interface.dart';
 
+// concrete class
 class Electronics implements Product {
   @override
-  void display() {
-    print("This is an electronics product");
-  }
+  String? name;
+  @override
+  String? category;
+  @override
+  int? price;
+  Electronics({this.name, this.category, this.price});
 }
 
+// concrete class
 class Clothing implements Product {
   @override
-  void display() {
-    print("This is a clothing product");
-  }
+  String? name;
+  @override
+  String? category;
+  @override
+  int? price;
+  Clothing({this.name, this.category, this.price});
 }
 
+// concrete class
 class Groceries implements Product {
   @override
-  void display() {
-    print("This is a groceries product");
-  }
-}
-
-abstract class ProductFactory {
-  Product createProduct();
-}
-
-class ElectronicsFactory implements ProductFactory {
+  String? name;
   @override
-  Product createProduct() {
-    return Electronics();
-  }
-}
-
-class ClothingFactory implements ProductFactory {
+  String? category;
   @override
-  Product createProduct() {
-    return Clothing();
-  }
+  int? price;
+  Groceries({this.name, this.category, this.price});
 }
 
-class GroceriesFactory implements ProductFactory {
-  @override
-  Product createProduct() {
-    return Groceries();
+class ProductFactory {
+  Product createProduct(String type, Product pdt) {
+    if (type == "clothing") {
+      allProducts.add(pdt);
+      return Clothing(name: pdt.name, category: pdt.category, price: pdt.price);
+    } else if (type == "groceries") {
+      allProducts.add(pdt);
+      return Groceries(
+          name: pdt.name, category: pdt.category, price: pdt.price);
+    } else {
+      allProducts.add(pdt);
+      return Electronics(
+          name: pdt.name, category: pdt.category, price: pdt.price);
+    }
   }
-}
-
-void main() {
-  ProductFactory factory = ElectronicsFactory();
-  Product product = factory.createProduct();
-  product.display();
-
-  factory = ClothingFactory();
-  product = factory.createProduct();
-  product.display();
-
-  factory = GroceriesFactory();
-  product = factory.createProduct();
-  product.display();
 }
